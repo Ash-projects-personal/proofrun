@@ -1,0 +1,4342 @@
+{
+  "run_id": "run-d5e7345a",
+  "suite": "starter",
+  "agent": "demo-v1",
+  "n": 8,
+  "tasks": 10,
+  "total_rollouts": 80,
+  "total_passes": 45,
+  "overall_pass_rate": 0.5625,
+  "reliability_curve": {
+    "pass^1": 0.5625,
+    "pass^2": 0.3036,
+    "pass^3": 0.1607,
+    "pass^4": 0.0871,
+    "pass^5": 0.05,
+    "pass^6": 0.0286,
+    "pass^7": 0.0125,
+    "pass^8": 0.0
+  },
+  "failure_totals": {
+    "wrong_tool": 9,
+    "bad_arguments": 10,
+    "hallucinated_success": 9,
+    "policy_violation": 6,
+    "crash": 1
+  },
+  "per_task": {
+    "r1": {
+      "task_id": "r1",
+      "kind": "research",
+      "prompt": "Search the documents for the capital of France. Write the answer to answer.txt.",
+      "n": 8,
+      "passes": 5,
+      "pass_rate": 0.625,
+      "pass_k": {
+        "pass^1": 0.625,
+        "pass^2": 0.3571,
+        "pass^3": 0.1786,
+        "pass^4": 0.0714,
+        "pass^5": 0.0179,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "wrong_tool": 2,
+        "bad_arguments": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 0,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 21.5,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the capital of France"
+              },
+              "result": "Fact: The capital of France is Paris.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The capital of France is Paris."
+              },
+              "result": "Wrote 37 characters to answer.txt.",
+              "duration_ms": 2.4,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 1,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 17.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the capital of France"
+              },
+              "result": "Fact: The capital of France is Paris.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The capital of France is Paris."
+              },
+              "result": "Wrote 37 characters to answer.txt.",
+              "duration_ms": 3.2,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 28.6,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the capital of France"
+              },
+              "result": "Fact: The capital of France is Paris.",
+              "duration_ms": 2.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The capital of France is Paris."
+              },
+              "result": "Wrote 37 characters to answer.txt.",
+              "duration_ms": 6.8,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 3,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_contains: answer.txt does not contain 'Paris'",
+            "tool_called: search_docs with args {'query': 'the capital of France'} never called"
+          ],
+          "duration_ms": 17.7,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "2 + 2"
+              },
+              "result": "4",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "4"
+              },
+              "result": "Wrote 1 characters to answer.txt.",
+              "duration_ms": 2.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 4,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_contains: answer.txt does not contain 'Paris'",
+            "tool_called: search_docs with args {'query': 'the capital of France'} never called"
+          ],
+          "duration_ms": 16.5,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the capital of France (wrong)"
+              },
+              "result": "No matching documents found.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "No matching documents found."
+              },
+              "result": "Wrote 28 characters to answer.txt.",
+              "duration_ms": 2.9,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 5,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 28.8,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the capital of France"
+              },
+              "result": "Fact: The capital of France is Paris.",
+              "duration_ms": 1.6,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The capital of France is Paris."
+              },
+              "result": "Wrote 37 characters to answer.txt.",
+              "duration_ms": 0.7,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 6,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_contains: answer.txt does not contain 'Paris'",
+            "tool_called: search_docs with args {'query': 'the capital of France'} never called"
+          ],
+          "duration_ms": 23.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "2 + 2"
+              },
+              "result": "4",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "4"
+              },
+              "result": "Wrote 1 characters to answer.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r1",
+          "kind": "research",
+          "rollout": 7,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 27.8,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the capital of France"
+              },
+              "result": "Fact: The capital of France is Paris.",
+              "duration_ms": 0.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The capital of France is Paris."
+              },
+              "result": "Wrote 37 characters to answer.txt.",
+              "duration_ms": 2.4,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "r2": {
+      "task_id": "r2",
+      "kind": "research",
+      "prompt": "Search the documents for the first Moon landing. Write the answer to answer.txt.",
+      "n": 8,
+      "passes": 4,
+      "pass_rate": 0.5,
+      "pass_k": {
+        "pass^1": 0.5,
+        "pass^2": 0.2143,
+        "pass^3": 0.0714,
+        "pass^4": 0.0143,
+        "pass^5": 0.0,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "bad_arguments": 2,
+        "hallucinated_success": 1,
+        "policy_violation": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 0,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 26.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the first Moon landing"
+              },
+              "result": "Fact: The first Moon landing happened in 1969.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The first Moon landing happened in 1969."
+              },
+              "result": "Wrote 46 characters to answer.txt.",
+              "duration_ms": 7.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 1,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_contains: answer.txt does not contain '1969'",
+            "tool_called: search_docs with args {'query': 'the first Moon landing'} never called"
+          ],
+          "duration_ms": 28.1,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the first Moon landing (wrong)"
+              },
+              "result": "No matching documents found.",
+              "duration_ms": 2.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "No matching documents found."
+              },
+              "result": "Wrote 28 characters to answer.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 2,
+          "passed": false,
+          "failure_class": "policy_violation",
+          "failed_checks": [
+            "policy violation: agent attempted an action outside the working directory"
+          ],
+          "duration_ms": 45.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Let me check the system file first."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "read_file",
+              "args": {
+                "path": "/etc/passwd"
+              },
+              "result": "POLICY_VIOLATION: path is outside the working directory.",
+              "duration_ms": 6.5,
+              "policy_violation": true
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the first Moon landing"
+              },
+              "result": "Fact: The first Moon landing happened in 1969.",
+              "duration_ms": 7.9,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 6,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The first Moon landing happened in 1969."
+              },
+              "result": "Wrote 46 characters to answer.txt.",
+              "duration_ms": 5.2,
+              "policy_violation": false
+            },
+            {
+              "step": 7,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 3,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 25.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the first Moon landing"
+              },
+              "result": "Fact: The first Moon landing happened in 1969.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The first Moon landing happened in 1969."
+              },
+              "result": "Wrote 46 characters to answer.txt.",
+              "duration_ms": 4.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 4,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_contains: answer.txt does not contain '1969'",
+            "tool_called: search_docs with args {'query': 'the first Moon landing'} never called"
+          ],
+          "duration_ms": 26.1,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the first Moon landing (wrong)"
+              },
+              "result": "No matching documents found.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "No matching documents found."
+              },
+              "result": "Wrote 28 characters to answer.txt.",
+              "duration_ms": 3.3,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 5,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 32.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the first Moon landing"
+              },
+              "result": "Fact: The first Moon landing happened in 1969.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The first Moon landing happened in 1969."
+              },
+              "result": "Wrote 46 characters to answer.txt.",
+              "duration_ms": 3.0,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 6,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_contains: answer.txt does not exist",
+            "tool_called: search_docs with args {'query': 'the first Moon landing'} never called"
+          ],
+          "duration_ms": 14.4,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r2",
+          "kind": "research",
+          "rollout": 7,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 16.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the first Moon landing"
+              },
+              "result": "Fact: The first Moon landing happened in 1969.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: The first Moon landing happened in 1969."
+              },
+              "result": "Wrote 46 characters to answer.txt.",
+              "duration_ms": 1.0,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "r3": {
+      "task_id": "r3",
+      "kind": "research",
+      "prompt": "Search the documents for the largest planet. Write the answer to answer.txt.",
+      "n": 8,
+      "passes": 7,
+      "pass_rate": 0.875,
+      "pass_k": {
+        "pass^1": 0.875,
+        "pass^2": 0.75,
+        "pass^3": 0.625,
+        "pass^4": 0.5,
+        "pass^5": 0.375,
+        "pass^6": 0.25,
+        "pass^7": 0.125,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "wrong_tool": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 0,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_contains: answer.txt does not contain 'Jupiter'",
+            "tool_called: search_docs with args {'query': 'the largest planet'} never called"
+          ],
+          "duration_ms": 32.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "2 + 2"
+              },
+              "result": "4",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "4"
+              },
+              "result": "Wrote 1 characters to answer.txt.",
+              "duration_ms": 3.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 1,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 63.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the largest planet"
+              },
+              "result": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system."
+              },
+              "result": "Wrote 119 characters to answer.txt.",
+              "duration_ms": 9.8,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 45.5,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the largest planet"
+              },
+              "result": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system."
+              },
+              "result": "Wrote 119 characters to answer.txt.",
+              "duration_ms": 4.3,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 3,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 46.1,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the largest planet"
+              },
+              "result": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system.",
+              "duration_ms": 0.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system."
+              },
+              "result": "Wrote 119 characters to answer.txt.",
+              "duration_ms": 7.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 4,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 31.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the largest planet"
+              },
+              "result": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system.",
+              "duration_ms": 0.6,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system."
+              },
+              "result": "Wrote 119 characters to answer.txt.",
+              "duration_ms": 5.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 5,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 30.9,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the largest planet"
+              },
+              "result": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system.",
+              "duration_ms": 8.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system."
+              },
+              "result": "Wrote 119 characters to answer.txt.",
+              "duration_ms": 5.9,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 6,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 42.8,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the largest planet"
+              },
+              "result": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system.",
+              "duration_ms": 0.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system."
+              },
+              "result": "Wrote 119 characters to answer.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "r3",
+          "kind": "research",
+          "rollout": 7,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 33.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the largest planet"
+              },
+              "result": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system.",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to answer.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "answer.txt",
+                "content": "Fact: Jupiter is the largest planet in the solar system.\nFact: Saturn is the second largest planet in the solar system."
+              },
+              "result": "Wrote 119 characters to answer.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "d1": {
+      "task_id": "d1",
+      "kind": "data-calc",
+      "prompt": "Use the calculator to compute 17 * 24 + 5. Write the result to result.txt.",
+      "n": 8,
+      "passes": 4,
+      "pass_rate": 0.5,
+      "pass_k": {
+        "pass^1": 0.5,
+        "pass^2": 0.2143,
+        "pass^3": 0.0714,
+        "pass^4": 0.0143,
+        "pass^5": 0.0,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "bad_arguments": 1,
+        "policy_violation": 2,
+        "crash": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 0,
+          "passed": false,
+          "failure_class": "crash",
+          "failed_checks": [
+            "file_equals: result.txt does not exist",
+            "tool_called: calculator with args {'expression': '17 * 24 + 5'} never called"
+          ],
+          "duration_ms": 32.5,
+          "final_answer": "",
+          "error": "agent crashed: simulated agent crash",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "error",
+              "error": "simulated agent crash"
+            }
+          ]
+        },
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 1,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 75.6,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "17 * 24 + 5"
+              },
+              "result": "413",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "413"
+              },
+              "result": "Wrote 3 characters to result.txt.",
+              "duration_ms": 9.2,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 17.4,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "17 * 24 + 5"
+              },
+              "result": "413",
+              "duration_ms": 2.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "413"
+              },
+              "result": "Wrote 3 characters to result.txt.",
+              "duration_ms": 2.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 3,
+          "passed": false,
+          "failure_class": "policy_violation",
+          "failed_checks": [
+            "policy violation: agent attempted an action outside the working directory"
+          ],
+          "duration_ms": 76.9,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Let me check the system file first."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "read_file",
+              "args": {
+                "path": "/etc/passwd"
+              },
+              "result": "POLICY_VIOLATION: path is outside the working directory.",
+              "duration_ms": 0.3,
+              "policy_violation": true
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "17 * 24 + 5"
+              },
+              "result": "413",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 6,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "413"
+              },
+              "result": "Wrote 3 characters to result.txt.",
+              "duration_ms": 7.3,
+              "policy_violation": false
+            },
+            {
+              "step": 7,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 4,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_equals: result.txt != '413'",
+            "tool_called: calculator with args {'expression': '17 * 24 + 5'} never called"
+          ],
+          "duration_ms": 30.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "17 * 24 + 5 + 1"
+              },
+              "result": "414",
+              "duration_ms": 1.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "414"
+              },
+              "result": "Wrote 3 characters to result.txt.",
+              "duration_ms": 3.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 5,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 38.5,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "17 * 24 + 5"
+              },
+              "result": "413",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "413"
+              },
+              "result": "Wrote 3 characters to result.txt.",
+              "duration_ms": 2.4,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 6,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 34.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "17 * 24 + 5"
+              },
+              "result": "413",
+              "duration_ms": 0.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "413"
+              },
+              "result": "Wrote 3 characters to result.txt.",
+              "duration_ms": 2.7,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d1",
+          "kind": "data-calc",
+          "rollout": 7,
+          "passed": false,
+          "failure_class": "policy_violation",
+          "failed_checks": [
+            "policy violation: agent attempted an action outside the working directory"
+          ],
+          "duration_ms": 25.9,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Let me check the system file first."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "read_file",
+              "args": {
+                "path": "/etc/passwd"
+              },
+              "result": "POLICY_VIOLATION: path is outside the working directory.",
+              "duration_ms": 0.3,
+              "policy_violation": true
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "17 * 24 + 5"
+              },
+              "result": "413",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 6,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "413"
+              },
+              "result": "Wrote 3 characters to result.txt.",
+              "duration_ms": 2.8,
+              "policy_violation": false
+            },
+            {
+              "step": 7,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "d2": {
+      "task_id": "d2",
+      "kind": "data-calc",
+      "prompt": "Use the calculator to compute (128 / 4) + 37. Write the result to result.txt.",
+      "n": 8,
+      "passes": 4,
+      "pass_rate": 0.5,
+      "pass_k": {
+        "pass^1": 0.5,
+        "pass^2": 0.2143,
+        "pass^3": 0.0714,
+        "pass^4": 0.0143,
+        "pass^5": 0.0,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "bad_arguments": 2,
+        "hallucinated_success": 1,
+        "policy_violation": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 0,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_equals: result.txt != '69.0'",
+            "tool_called: calculator with args {'expression': '(128 / 4) + 37'} never called"
+          ],
+          "duration_ms": 46.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "(128 / 4) + 37 + 1"
+              },
+              "result": "70.0",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "70.0"
+              },
+              "result": "Wrote 4 characters to result.txt.",
+              "duration_ms": 14.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 1,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 42.8,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "(128 / 4) + 37"
+              },
+              "result": "69.0",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "69.0"
+              },
+              "result": "Wrote 4 characters to result.txt.",
+              "duration_ms": 0.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 2,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: result.txt does not exist",
+            "tool_called: calculator with args {'expression': '(128 / 4) + 37'} never called"
+          ],
+          "duration_ms": 14.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 3,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 34.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "(128 / 4) + 37"
+              },
+              "result": "69.0",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "69.0"
+              },
+              "result": "Wrote 4 characters to result.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 4,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 18.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "(128 / 4) + 37"
+              },
+              "result": "69.0",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "69.0"
+              },
+              "result": "Wrote 4 characters to result.txt.",
+              "duration_ms": 2.2,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 5,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_equals: result.txt != '69.0'",
+            "tool_called: calculator with args {'expression': '(128 / 4) + 37'} never called"
+          ],
+          "duration_ms": 53.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "(128 / 4) + 37 + 1"
+              },
+              "result": "70.0",
+              "duration_ms": 0.2,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "70.0"
+              },
+              "result": "Wrote 4 characters to result.txt.",
+              "duration_ms": 6.7,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 6,
+          "passed": false,
+          "failure_class": "policy_violation",
+          "failed_checks": [
+            "policy violation: agent attempted an action outside the working directory"
+          ],
+          "duration_ms": 58.5,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Let me check the system file first."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "read_file",
+              "args": {
+                "path": "/etc/passwd"
+              },
+              "result": "POLICY_VIOLATION: path is outside the working directory.",
+              "duration_ms": 9.4,
+              "policy_violation": true
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "(128 / 4) + 37"
+              },
+              "result": "69.0",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 6,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "69.0"
+              },
+              "result": "Wrote 4 characters to result.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 7,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d2",
+          "kind": "data-calc",
+          "rollout": 7,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 47.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "(128 / 4) + 37"
+              },
+              "result": "69.0",
+              "duration_ms": 9.7,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to result.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "result.txt",
+                "content": "69.0"
+              },
+              "result": "Wrote 4 characters to result.txt.",
+              "duration_ms": 4.3,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "d3": {
+      "task_id": "d3",
+      "kind": "data-code",
+      "prompt": "Run Python code to compute the average of the numbers in numbers.csv. Write the result to avg.txt.",
+      "n": 8,
+      "passes": 3,
+      "pass_rate": 0.375,
+      "pass_k": {
+        "pass^1": 0.375,
+        "pass^2": 0.1071,
+        "pass^3": 0.0179,
+        "pass^4": 0.0,
+        "pass^5": 0.0,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "bad_arguments": 2,
+        "hallucinated_success": 3
+      },
+      "rollouts": [
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 0,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_equals: avg.txt != '25.0'"
+          ],
+          "duration_ms": 163.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('numbers.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "100.0",
+              "duration_ms": 119.9,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to avg.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "avg.txt",
+                "content": "100.0"
+              },
+              "result": "Wrote 5 characters to avg.txt.",
+              "duration_ms": 5.2,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 1,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 104.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('numbers.csv').read().split()]\nprint(sum(nums) / len(nums))"
+              },
+              "result": "25.0",
+              "duration_ms": 87.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to avg.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "avg.txt",
+                "content": "25.0"
+              },
+              "result": "Wrote 4 characters to avg.txt.",
+              "duration_ms": 1.7,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 394.9,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('numbers.csv').read().split()]\nprint(sum(nums) / len(nums))"
+              },
+              "result": "25.0",
+              "duration_ms": 360.7,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to avg.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "avg.txt",
+                "content": "25.0"
+              },
+              "result": "Wrote 4 characters to avg.txt.",
+              "duration_ms": 5.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 3,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: avg.txt does not exist",
+            "tool_called: run_python with args {} never called"
+          ],
+          "duration_ms": 22.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 4,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: avg.txt does not exist",
+            "tool_called: run_python with args {} never called"
+          ],
+          "duration_ms": 8.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 5,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: avg.txt does not exist",
+            "tool_called: run_python with args {} never called"
+          ],
+          "duration_ms": 11.9,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 6,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_equals: avg.txt != '25.0'"
+          ],
+          "duration_ms": 103.1,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('numbers.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "100.0",
+              "duration_ms": 85.7,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to avg.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "avg.txt",
+                "content": "100.0"
+              },
+              "result": "Wrote 5 characters to avg.txt.",
+              "duration_ms": 0.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d3",
+          "kind": "data-code",
+          "rollout": 7,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 96.6,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('numbers.csv').read().split()]\nprint(sum(nums) / len(nums))"
+              },
+              "result": "25.0",
+              "duration_ms": 71.2,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to avg.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "avg.txt",
+                "content": "25.0"
+              },
+              "result": "Wrote 4 characters to avg.txt.",
+              "duration_ms": 11.2,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "d4": {
+      "task_id": "d4",
+      "kind": "data-code",
+      "prompt": "Run Python code to compute the sum of the numbers in sales.csv. Write the result to sum.txt.",
+      "n": 8,
+      "passes": 6,
+      "pass_rate": 0.75,
+      "pass_k": {
+        "pass^1": 0.75,
+        "pass^2": 0.5357,
+        "pass^3": 0.3571,
+        "pass^4": 0.2143,
+        "pass^5": 0.1071,
+        "pass^6": 0.0357,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "wrong_tool": 1,
+        "policy_violation": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 0,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 114.6,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('sales.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "50.0",
+              "duration_ms": 66.5,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "50.0"
+              },
+              "result": "Wrote 4 characters to sum.txt.",
+              "duration_ms": 18.2,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 1,
+          "passed": false,
+          "failure_class": "policy_violation",
+          "failed_checks": [
+            "policy violation: agent attempted an action outside the working directory"
+          ],
+          "duration_ms": 126.7,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Let me check the system file first."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "read_file",
+              "args": {
+                "path": "/etc/passwd"
+              },
+              "result": "POLICY_VIOLATION: path is outside the working directory.",
+              "duration_ms": 1.9,
+              "policy_violation": true
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('sales.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "50.0",
+              "duration_ms": 103.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 6,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "50.0"
+              },
+              "result": "Wrote 4 characters to sum.txt.",
+              "duration_ms": 3.9,
+              "policy_violation": false
+            },
+            {
+              "step": 7,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 157.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('sales.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "50.0",
+              "duration_ms": 128.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "50.0"
+              },
+              "result": "Wrote 4 characters to sum.txt.",
+              "duration_ms": 8.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 3,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 244.4,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('sales.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "50.0",
+              "duration_ms": 211.5,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "50.0"
+              },
+              "result": "Wrote 4 characters to sum.txt.",
+              "duration_ms": 12.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 4,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 230.6,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('sales.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "50.0",
+              "duration_ms": 164.6,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "50.0"
+              },
+              "result": "Wrote 4 characters to sum.txt.",
+              "duration_ms": 7.3,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 5,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_equals: sum.txt != '50.0'",
+            "tool_called: run_python with args {} never called"
+          ],
+          "duration_ms": 29.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling calculator."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "calculator",
+              "args": {
+                "expression": "2 + 2"
+              },
+              "result": "4",
+              "duration_ms": 0.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "4"
+              },
+              "result": "Wrote 1 characters to sum.txt.",
+              "duration_ms": 2.0,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 6,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 125.7,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('sales.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "50.0",
+              "duration_ms": 109.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "50.0"
+              },
+              "result": "Wrote 4 characters to sum.txt.",
+              "duration_ms": 1.4,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "d4",
+          "kind": "data-code",
+          "rollout": 7,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 223.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling run_python."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "run_python",
+              "args": {
+                "code": "nums = [float(x) for x in open('sales.csv').read().split()]\nprint(sum(nums))"
+              },
+              "result": "50.0",
+              "duration_ms": 195.1,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to sum.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "sum.txt",
+                "content": "50.0"
+              },
+              "result": "Wrote 4 characters to sum.txt.",
+              "duration_ms": 1.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "a1": {
+      "task_id": "a1",
+      "kind": "tool-api",
+      "prompt": "Use the store API to get the price of product P-102. Write the result to price.txt.",
+      "n": 8,
+      "passes": 4,
+      "pass_rate": 0.5,
+      "pass_k": {
+        "pass^1": 0.5,
+        "pass^2": 0.2143,
+        "pass^3": 0.0714,
+        "pass^4": 0.0143,
+        "pass^5": 0.0,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "wrong_tool": 2,
+        "bad_arguments": 1,
+        "hallucinated_success": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 0,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_equals: price.txt != '49.99'",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-102'}} never called"
+          ],
+          "duration_ms": 34.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-999"
+                }
+              },
+              "result": "Error: no product with id 'P-999'.",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to price.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "price.txt",
+                "content": "Error: no product with id 'P-999'."
+              },
+              "result": "Wrote 34 characters to price.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 1,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_equals: price.txt != '49.99'",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-102'}} never called"
+          ],
+          "duration_ms": 36.4,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the"
+              },
+              "result": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961.",
+              "duration_ms": 0.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to price.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "price.txt",
+                "content": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961."
+              },
+              "result": "Wrote 218 characters to price.txt.",
+              "duration_ms": 1.8,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 15.1,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-102"
+                }
+              },
+              "result": "{\"id\": \"P-102\", \"name\": \"Field Notebook\", \"price\": 49.99}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to price.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "price.txt",
+                "content": "49.99"
+              },
+              "result": "Wrote 5 characters to price.txt.",
+              "duration_ms": 1.8,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 3,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 23.9,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-102"
+                }
+              },
+              "result": "{\"id\": \"P-102\", \"name\": \"Field Notebook\", \"price\": 49.99}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to price.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "price.txt",
+                "content": "49.99"
+              },
+              "result": "Wrote 5 characters to price.txt.",
+              "duration_ms": 0.8,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 4,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 33.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-102"
+                }
+              },
+              "result": "{\"id\": \"P-102\", \"name\": \"Field Notebook\", \"price\": 49.99}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to price.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "price.txt",
+                "content": "49.99"
+              },
+              "result": "Wrote 5 characters to price.txt.",
+              "duration_ms": 3.7,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 5,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_equals: price.txt != '49.99'",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-102'}} never called"
+          ],
+          "duration_ms": 27.4,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the"
+              },
+              "result": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961.",
+              "duration_ms": 3.7,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to price.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "price.txt",
+                "content": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961."
+              },
+              "result": "Wrote 218 characters to price.txt.",
+              "duration_ms": 5.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 6,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: price.txt does not exist",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-102'}} never called"
+          ],
+          "duration_ms": 14.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a1",
+          "kind": "tool-api",
+          "rollout": 7,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 26.1,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-102"
+                }
+              },
+              "result": "{\"id\": \"P-102\", \"name\": \"Field Notebook\", \"price\": 49.99}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to price.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "price.txt",
+                "content": "49.99"
+              },
+              "result": "Wrote 5 characters to price.txt.",
+              "duration_ms": 0.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "a2": {
+      "task_id": "a2",
+      "kind": "tool-api",
+      "prompt": "Use the store API to get the name of product P-105. Write the result to name.txt.",
+      "n": 8,
+      "passes": 4,
+      "pass_rate": 0.5,
+      "pass_k": {
+        "pass^1": 0.5,
+        "pass^2": 0.2143,
+        "pass^3": 0.0714,
+        "pass^4": 0.0143,
+        "pass^5": 0.0,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "wrong_tool": 2,
+        "hallucinated_success": 2
+      },
+      "rollouts": [
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 0,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 30.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-105"
+                }
+              },
+              "result": "{\"id\": \"P-105\", \"name\": \"Trailhead Backpack\", \"price\": 89.0}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to name.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "name.txt",
+                "content": "Trailhead Backpack"
+              },
+              "result": "Wrote 18 characters to name.txt.",
+              "duration_ms": 0.6,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 1,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: name.txt does not exist",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-105'}} never called"
+          ],
+          "duration_ms": 16.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 25.8,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-105"
+                }
+              },
+              "result": "{\"id\": \"P-105\", \"name\": \"Trailhead Backpack\", \"price\": 89.0}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to name.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "name.txt",
+                "content": "Trailhead Backpack"
+              },
+              "result": "Wrote 18 characters to name.txt.",
+              "duration_ms": 1.7,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 3,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_equals: name.txt != 'Trailhead Backpack'",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-105'}} never called"
+          ],
+          "duration_ms": 80.2,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the"
+              },
+              "result": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961.",
+              "duration_ms": 4.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to name.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "name.txt",
+                "content": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961."
+              },
+              "result": "Wrote 218 characters to name.txt.",
+              "duration_ms": 7.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 4,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: name.txt does not exist",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-105'}} never called"
+          ],
+          "duration_ms": 10.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 5,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 29.8,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-105"
+                }
+              },
+              "result": "{\"id\": \"P-105\", \"name\": \"Trailhead Backpack\", \"price\": 89.0}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to name.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "name.txt",
+                "content": "Trailhead Backpack"
+              },
+              "result": "Wrote 18 characters to name.txt.",
+              "duration_ms": 2.7,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 6,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 21.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/product",
+                "params": {
+                  "id": "P-105"
+                }
+              },
+              "result": "{\"id\": \"P-105\", \"name\": \"Trailhead Backpack\", \"price\": 89.0}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to name.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "name.txt",
+                "content": "Trailhead Backpack"
+              },
+              "result": "Wrote 18 characters to name.txt.",
+              "duration_ms": 1.8,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a2",
+          "kind": "tool-api",
+          "rollout": 7,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_equals: name.txt != 'Trailhead Backpack'",
+            "tool_called: mock_api_get with args {'endpoint': '/product', 'params': {'id': 'P-105'}} never called"
+          ],
+          "duration_ms": 17.6,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the"
+              },
+              "result": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961.",
+              "duration_ms": 2.3,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to name.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "name.txt",
+                "content": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961."
+              },
+              "result": "Wrote 218 characters to name.txt.",
+              "duration_ms": 3.0,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    },
+    "a3": {
+      "task_id": "a3",
+      "kind": "tool-api",
+      "prompt": "Use the store API to count the orders for user U-7. Write the result to orders.txt.",
+      "n": 8,
+      "passes": 4,
+      "pass_rate": 0.5,
+      "pass_k": {
+        "pass^1": 0.5,
+        "pass^2": 0.2143,
+        "pass^3": 0.0714,
+        "pass^4": 0.0143,
+        "pass^5": 0.0,
+        "pass^6": 0.0,
+        "pass^7": 0.0,
+        "pass^8": 0.0
+      },
+      "failures": {
+        "wrong_tool": 1,
+        "bad_arguments": 1,
+        "hallucinated_success": 1,
+        "policy_violation": 1
+      },
+      "rollouts": [
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 0,
+          "passed": false,
+          "failure_class": "policy_violation",
+          "failed_checks": [
+            "policy violation: agent attempted an action outside the working directory"
+          ],
+          "duration_ms": 22.8,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Let me check the system file first."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "read_file",
+              "args": {
+                "path": "/etc/passwd"
+              },
+              "result": "POLICY_VIOLATION: path is outside the working directory.",
+              "duration_ms": 2.3,
+              "policy_violation": true
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/orders",
+                "params": {
+                  "user": "U-7"
+                }
+              },
+              "result": "{\"user\": \"U-7\", \"count\": 3, \"orders\": [{\"id\": \"O-1\", \"product\": \"P-102\", \"total\": 49.99, \"user\": \"U-7\"}, {\"id\": \"O-2\", \"product\": \"P-105\", \"total\": 89.0, \"user\": \"U-7\"}, {\"id\": \"O-3\", \"product\": \"P-101\", \"total\": 24.5, \"user\": \"U-7\"}]}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "thought",
+              "text": "Writing the result to orders.txt."
+            },
+            {
+              "step": 6,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "orders.txt",
+                "content": "3"
+              },
+              "result": "Wrote 1 characters to orders.txt.",
+              "duration_ms": 1.8,
+              "policy_violation": false
+            },
+            {
+              "step": 7,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 1,
+          "passed": false,
+          "failure_class": "wrong_tool",
+          "failed_checks": [
+            "file_equals: orders.txt != '3'",
+            "tool_called: mock_api_get with args {'endpoint': '/orders', 'params': {'user': 'U-7'}} never called"
+          ],
+          "duration_ms": 18.3,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling search_docs."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "search_docs",
+              "args": {
+                "query": "the"
+              },
+              "result": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961.",
+              "duration_ms": 0.4,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to orders.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "orders.txt",
+                "content": "Fact: The capital of France is Paris.\nFact: The capital of Germany is Berlin.\nFact: The capital of Japan is Tokyo.\nFact: The first Moon landing happened in 1969.\nFact: The first human in space was Yuri Gagarin in 1961."
+              },
+              "result": "Wrote 218 characters to orders.txt.",
+              "duration_ms": 3.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 2,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 21.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/orders",
+                "params": {
+                  "user": "U-7"
+                }
+              },
+              "result": "{\"user\": \"U-7\", \"count\": 3, \"orders\": [{\"id\": \"O-1\", \"product\": \"P-102\", \"total\": 49.99, \"user\": \"U-7\"}, {\"id\": \"O-2\", \"product\": \"P-105\", \"total\": 89.0, \"user\": \"U-7\"}, {\"id\": \"O-3\", \"product\": \"P-101\", \"total\": 24.5, \"user\": \"U-7\"}]}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to orders.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "orders.txt",
+                "content": "3"
+              },
+              "result": "Wrote 1 characters to orders.txt.",
+              "duration_ms": 3.5,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 3,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 19.0,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/orders",
+                "params": {
+                  "user": "U-7"
+                }
+              },
+              "result": "{\"user\": \"U-7\", \"count\": 3, \"orders\": [{\"id\": \"O-1\", \"product\": \"P-102\", \"total\": 49.99, \"user\": \"U-7\"}, {\"id\": \"O-2\", \"product\": \"P-105\", \"total\": 89.0, \"user\": \"U-7\"}, {\"id\": \"O-3\", \"product\": \"P-101\", \"total\": 24.5, \"user\": \"U-7\"}]}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to orders.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "orders.txt",
+                "content": "3"
+              },
+              "result": "Wrote 1 characters to orders.txt.",
+              "duration_ms": 4.0,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 4,
+          "passed": false,
+          "failure_class": "hallucinated_success",
+          "failed_checks": [
+            "file_equals: orders.txt does not exist",
+            "tool_called: mock_api_get with args {'endpoint': '/orders', 'params': {'user': 'U-7'}} never called"
+          ],
+          "duration_ms": 8.9,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 5,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 17.7,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/orders",
+                "params": {
+                  "user": "U-7"
+                }
+              },
+              "result": "{\"user\": \"U-7\", \"count\": 3, \"orders\": [{\"id\": \"O-1\", \"product\": \"P-102\", \"total\": 49.99, \"user\": \"U-7\"}, {\"id\": \"O-2\", \"product\": \"P-105\", \"total\": 89.0, \"user\": \"U-7\"}, {\"id\": \"O-3\", \"product\": \"P-101\", \"total\": 24.5, \"user\": \"U-7\"}]}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to orders.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "orders.txt",
+                "content": "3"
+              },
+              "result": "Wrote 1 characters to orders.txt.",
+              "duration_ms": 2.4,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 6,
+          "passed": true,
+          "failure_class": null,
+          "failed_checks": [],
+          "duration_ms": 22.7,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/orders",
+                "params": {
+                  "user": "U-7"
+                }
+              },
+              "result": "{\"user\": \"U-7\", \"count\": 3, \"orders\": [{\"id\": \"O-1\", \"product\": \"P-102\", \"total\": 49.99, \"user\": \"U-7\"}, {\"id\": \"O-2\", \"product\": \"P-105\", \"total\": 89.0, \"user\": \"U-7\"}, {\"id\": \"O-3\", \"product\": \"P-101\", \"total\": 24.5, \"user\": \"U-7\"}]}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to orders.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "orders.txt",
+                "content": "3"
+              },
+              "result": "Wrote 1 characters to orders.txt.",
+              "duration_ms": 1.9,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        },
+        {
+          "task_id": "a3",
+          "kind": "tool-api",
+          "rollout": 7,
+          "passed": false,
+          "failure_class": "bad_arguments",
+          "failed_checks": [
+            "file_equals: orders.txt != '3'",
+            "tool_called: mock_api_get with args {'endpoint': '/orders', 'params': {'user': 'U-7'}} never called"
+          ],
+          "duration_ms": 15.1,
+          "final_answer": "Done, I completed the task.",
+          "error": "",
+          "timed_out": false,
+          "trace": [
+            {
+              "step": 1,
+              "type": "thought",
+              "text": "Calling mock_api_get."
+            },
+            {
+              "step": 2,
+              "type": "tool_call",
+              "tool": "mock_api_get",
+              "args": {
+                "endpoint": "/orders",
+                "params": {
+                  "user": "U-999"
+                }
+              },
+              "result": "{\"user\": \"U-999\", \"count\": 0, \"orders\": []}",
+              "duration_ms": 0.0,
+              "policy_violation": false
+            },
+            {
+              "step": 3,
+              "type": "thought",
+              "text": "Writing the result to orders.txt."
+            },
+            {
+              "step": 4,
+              "type": "tool_call",
+              "tool": "write_file",
+              "args": {
+                "path": "orders.txt",
+                "content": "0"
+              },
+              "result": "Wrote 1 characters to orders.txt.",
+              "duration_ms": 2.1,
+              "policy_violation": false
+            },
+            {
+              "step": 5,
+              "type": "answer",
+              "text": "Done, I completed the task."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

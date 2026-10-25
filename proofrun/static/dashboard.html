@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProofRun — agent reliability harness</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; max-width: 960px; margin: 0 auto; padding: 24px; color: #111; }
+  h1 { font-size: 24px; margin-bottom: 4px; }
+  .sub { color: #555; margin-top: 0; }
+  .cards { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .card { border: 1px solid #ddd; border-radius: 8px; padding: 12px 16px; min-width: 140px; }
+  .card b { font-size: 22px; display: block; }
+  .card span { color: #555; font-size: 13px; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; }
+  th, td { border: 1px solid #ddd; padding: 8px; text-align: left; font-size: 14px; }
+  th { background: #f5f5f5; }
+  .bar { height: 10px; background: #e5e5e5; border-radius: 5px; overflow: hidden; }
+  .bar > div { height: 100%; background: #2563eb; }
+  details { border: 1px solid #ddd; border-radius: 6px; padding: 8px 12px; margin: 6px 0; }
+  details.failed { border-color: #f0b4b4; background: #fff7f7; }
+  summary { cursor: pointer; font-weight: 600; }
+  .step { font-family: ui-monospace, monospace; font-size: 13px; white-space: pre-wrap; word-break: break-word; }
+  .fail { color: #b91c1c; font-weight: 600; }
+  .pass { color: #15803d; font-weight: 600; }
+  select, button { font-size: 14px; padding: 6px 10px; }
+  a { color: #2563eb; }
+</style>
+</head>
+<body>
+<h1>ProofRun</h1>
+<p class="sub">ResolveBench for your own agent. Run an agent N times per task and see whether it holds up.</p>
+
+<label for="runSelect">Run:</label>
+<select id="runSelect"></select>
+<button id="refreshBtn">Refresh</button>
+<a id="exportLink" href="#">Download report JSON</a>
+
+<div id="report"></div>
+
+<script>
+async function loadRuns() {
+  const res = await fetch('/api/runs');
+  const runs = await res.json();
+  const sel = document.getElementById('runSelect');
+  sel.innerHTML = '';
+  runs.forEach(r => {
+    const opt = document.createElement('option');
+    opt.value = r.id;
+    opt.textContent = `${r.id} — ${r.agent} — ${r.started_at}`;
+    sel.appendChild(opt);
+  });
+  if (runs.length) { await loadReport(runs[0].id); }
+  else { document.getElementById('report').innerHTML = '<p>No runs yet. Run <code>python -m proofrun run</code> or POST /api/runs.</p>'; }
+}
+
+async function loadReport(runId) {
+  const res = await fetch(`/api/runs/${runId}`);
+  const rep = await res.json();
+  document.getElementById('exportLink').href = `/api/runs/${runId}/export`;
+  const el = document.getElementById('report');
+  const curveRows = Object.entries(rep.reliability_curve).map(([k, v]) =>
+    `<tr><td>${k}</td><td>${(v * 100).toFixed(1)}%</td><td><div class="bar"><div style="width:${(v * 100).toFixed(1)}%"></div></div></td></tr>`
+  ).join('');
+  const taskRows = Object.values(rep.per_task).map(t => {
+    const fails = Object.entries(t.failures).map(([c, n]) => `${c}: ${n}`).join(', ') || '—';
+    return `<tr><td>${t.task_id}</td><td>${t.kind}</td><td>${t.passes}/${t.n}</td><td>${(t.pass_rate * 100).toFixed(0)}%</td><td>${(t.pass_k['pass^8'] * 100).toFixed(0)}%</td><td>${fails}</td></tr>`;
+  }).join('');
+  let traces = '';
+  Object.values(rep.per_task).forEach(t => {
+    t.rollouts.forEach(r => {
+      const cls = r.passed ? '' : 'failed';
+      const verdict = r.passed ? '<span class="pass">PASS</span>' : `<span class="fail">FAIL — ${r.failure_class || 'unknown'}</span>`;
+      const steps = r.trace.map(s => {
+        if (s.type === 'tool_call') return `#${s.step} ${s.tool}(${JSON.stringify(s.args)}) → ${s.result}${s.policy_violation ? ' [POLICY VIOLATION]' : ''}`;
+        if (s.type === 'thought') return `#${s.step} thought: ${s.text}`;
+        if (s.type === 'answer') return `#${s.step} answer: ${s.text}`;
+        if (s.type === 'error') return `#${s.step} ERROR: ${s.error}`;
+        return `#${s.step} ${JSON.stringify(s)}`;
+      }).join('\n');
+      traces += `<details class="${cls}"><summary>${t.task_id} · rollout ${r.rollout} — ${verdict} (${r.duration_ms} ms)</summary><div class="step">${escapeHtml(steps)}</div></details>`;
+    });
+  });
+  el.innerHTML = `
+    <div class="cards">
+      <div class="card"><b>${(rep.overall_pass_rate * 100).toFixed(1)}%</b><span>overall pass rate</span></div>
+      <div class="card"><b>${rep.total_passes}/${rep.total_rollouts}</b><span>rollouts passed</span></div>
+      <div class="card"><b>${(rep.reliability_curve['pass^8'] * 100).toFixed(1)}%</b><span>pass^8 (all 8 pass)</span></div>
+      <div class="card"><b>${rep.agent}</b><span>agent config</span></div>
+    </div>
+    <h2>Reliability curve (average pass^k across tasks)</h2>
+    <table><tr><th>k</th><th>pass^k</th><th></th></tr>${curveRows}</table>
+    <h2>Per task</h2>
+    <table><tr><th>Task</th><th>Kind</th><th>Passed</th><th>Pass rate</th><th>pass^8</th><th>Failures</th></tr>${taskRows}</table>
+    <h2>Rollouts (click to expand the full trace)</h2>
+    ${traces}`;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+document.getElementById('runSelect').addEventListener('change', e => loadReport(e.target.value));
+document.getElementById('refreshBtn').addEventListener('click', loadRuns);
+loadRuns();
+</script>
+</body>
+</html>

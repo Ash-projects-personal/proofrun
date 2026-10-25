@@ -1,0 +1,3 @@
+Fact: The capital of France is Paris.
+Fact: The capital of Germany is Berlin.
+Fact: The capital of Japan is Tokyo.
